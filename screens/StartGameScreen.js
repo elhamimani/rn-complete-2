@@ -3,7 +3,8 @@ import {View, Text, StyleSheet, Button, Touchable, TouchableWithoutFeedback,Keyb
 
 import Card from "../components/Card";
 import Input from "../components/Input";
-import colors from "../constants/colors";
+import NumberContainer from "../components/NumberContainer";
+import Colors from "../constants/colors";
 
 const StartGameScreen = props => {
 
@@ -35,11 +36,19 @@ const StartGameScreen = props => {
         setConfirmed(true);
         setSelectedNumber(chosenNumber);
         setEnteredValue('');
+        Keyboard.dismiss();
     };
 
     let confirmedOutput;
+
     if (Confirmed) {
-        confirmedOutput = <Text>Chosen Number: {SelectedNumber}</Text>
+        confirmedOutput = (
+        <Card style={styles.summaryContainer}>
+           <Text>You Selected</Text>
+           <NumberContainer>{SelectedNumber}</NumberContainer>
+           <Button title="START GAME" onPress={() => props.onStartGame(SelectedNumber)}/>
+        </Card>
+        );
     };
 
     return (
@@ -61,8 +70,8 @@ const StartGameScreen = props => {
                  />
 
                <View style={styles.buttonContainer}>
-                <View style={styles.button}><Button title="Reset" onPress={resetInputHandler} color={colors.accent} /></View>
-                <View style={styles.button}><Button title="Confirm" onPress={ConfirmInputHandler} color={colors.primary} /></View>
+                <View style={styles.button}><Button title="Reset" onPress={resetInputHandler} color={Colors.accent} /></View>
+                <View style={styles.button}><Button title="Confirm" onPress={ConfirmInputHandler} color={Colors.primary} /></View>
                </View>
             </Card>
             {confirmedOutput}
@@ -106,6 +115,10 @@ const styles = StyleSheet.create({
     input: {
         width: 50,
         textAlign: 'center',
+    },
+    summaryContainer: {
+        marginTop: 20,
+        alignItems: 'center',
     }
 });
 
