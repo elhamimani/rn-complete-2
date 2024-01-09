@@ -8,9 +8,9 @@ const Input = props => {
 const styles = StyleSheet.create({
     input: {
         height: 30,
-        borderBlockColor: 'grey',
-        borderBottomColor: 1,
-        marginVertical:10,
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+        marginVertical: 10,
     }
 });
 
