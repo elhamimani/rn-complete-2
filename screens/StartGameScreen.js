@@ -4,8 +4,10 @@ import {View, Text, StyleSheet, Button, Touchable, TouchableWithoutFeedback,Keyb
 import Card from "../components/Card";
 import Input from "../components/Input";
 import NumberContainer from "../components/NumberContainer";
-import Colors from "../constants/colors";
 import DefaultStyles from '../constants/defalt-styles';
+import MainButton from "../components/MainButton";
+import Colors from "../constants/colors";
+
 
 const StartGameScreen = props => {
 
@@ -47,7 +49,9 @@ const StartGameScreen = props => {
         <Card style={styles.summaryContainer}>
            <Text>You Selected</Text>
            <NumberContainer>{SelectedNumber}</NumberContainer>
-           <Button title="START GAME" onPress={() => props.onStartGame(SelectedNumber)}/>
+           <MainButton onPress={() => props.onStartGame(SelectedNumber)}>
+                START GAME
+            </MainButton>
         </Card>
         );
     };
